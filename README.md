@@ -1,6 +1,6 @@
-# Travel Route Optimizer
-
-Optimize your store visit route in Copenhagen. Upload a CSV of store addresses, and get back an optimized travel itinerary with an interactive map.
+# Travelling Salesman Route Optimizer
+1. Optimize your store visit route to cover as many high priority stores as possible, with as few meters as possible. 
+2. Upload a CSV of store addresses, and get back an optimized travel itinerary with an interactive map.
 
 ## Architecture
 
