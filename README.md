@@ -2,6 +2,9 @@
 1. You can use this repo to find the optimal route for your sales roadshow.
 2. Upload a CSV of store addresses, and get back an optimized travel itinerary with an interactive map.
 
+Here's what the webapp looks like when you've uploaded your locations and selected your strategy:
+<img width="1351" height="875" alt="Screenshot 2026-02-10 at 21 34 10" src="https://github.com/user-attachments/assets/ff27f05e-b5eb-4aa9-8327-8b6ad957ef32" />
+
 ## Architecture
 
 - **Backend** (`backend/`): FastAPI + OR-Tools + geopy. Handles geocoding, distance matrix computation, and TSP solving.
