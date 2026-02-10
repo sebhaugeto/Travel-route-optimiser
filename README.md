@@ -1,5 +1,5 @@
 # Travelling Salesman Route Optimizer
-1. Optimize your store visit route to cover as many high priority stores as possible, with as few meters as possible. 
+1. You can use this repo to find the optimal route for your sales roadshow.
 2. Upload a CSV of store addresses, and get back an optimized travel itinerary with an interactive map.
 
 ## Architecture
