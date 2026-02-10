@@ -2,18 +2,67 @@
 
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import type { Store } from "@/lib/api";
 
 interface DownloadButtonProps {
-  csvBase64: string | null;
+  stores: Store[];
   disabled: boolean;
 }
 
-export function DownloadButton({ csvBase64, disabled }: DownloadButtonProps) {
-  const handleDownload = () => {
-    if (!csvBase64) return;
+function storesToCsv(stores: Store[]): string {
+  const headers = [
+    "visit_order",
+    "day",
+    "day_position",
+    "name",
+    "address",
+    "lat",
+    "lng",
+    "leg_distance_m",
+    "url",
+    "revenue",
+  ];
 
-    const csvContent = atob(csvBase64);
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const escape = (v: string) => {
+    if (v.includes(",") || v.includes('"') || v.includes("\n")) {
+      return `"${v.replace(/"/g, '""')}"`;
+    }
+    return v;
+  };
+
+  // Compute each store's position within its day (1-based)
+  const dayCounters = new Map<number, number>();
+  const dayPositions: number[] = [];
+  for (const s of stores) {
+    const pos = (dayCounters.get(s.day) ?? 0) + 1;
+    dayCounters.set(s.day, pos);
+    dayPositions.push(pos);
+  }
+
+  const rows = stores.map((s, i) =>
+    [
+      s.visit_order,
+      s.day,
+      dayPositions[i],
+      escape(s.name),
+      escape(s.address),
+      s.lat,
+      s.lng,
+      s.leg_distance_m,
+      s.url ? escape(s.url) : "",
+      s.revenue != null ? s.revenue : "",
+    ].join(","),
+  );
+
+  return [headers.join(","), ...rows].join("\n");
+}
+
+export function DownloadButton({ stores, disabled }: DownloadButtonProps) {
+  const handleDownload = () => {
+    if (stores.length === 0) return;
+
+    const csv = storesToCsv(stores);
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;

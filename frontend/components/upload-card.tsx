@@ -1,19 +1,41 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
-import { Upload, FileText } from "lucide-react";
+import { Upload, FileText, Home } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Progress } from "@/components/ui/progress";
+import { Switch } from "@/components/ui/switch";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import type { ProgressEvent, JourneyMode } from "@/lib/api";
+
+const PRESET_ADDRESS = "Applebys Pl. 7, 1411 København";
 
 interface UploadCardProps {
-  onSubmit: (file: File, storesPerDay: number) => void;
+  onSubmit: (
+    file: File,
+    storesPerDay: number,
+    prioritizeRevenue: boolean,
+    journeyMode: JourneyMode,
+    startAddress: string,
+  ) => void;
   isLoading: boolean;
+  progress: ProgressEvent | null;
 }
 
-export function UploadCard({ onSubmit, isLoading }: UploadCardProps) {
+export function UploadCard({ onSubmit, isLoading, progress }: UploadCardProps) {
   const [file, setFile] = useState<File | null>(null);
   const [storesPerDay, setStoresPerDay] = useState(20);
+  const [prioritizeRevenue, setPrioritizeRevenue] = useState(false);
+  const [journeyMode, setJourneyMode] = useState<JourneyMode>("continue");
+  const [startAddress, setStartAddress] = useState(PRESET_ADDRESS);
   const [isDragOver, setIsDragOver] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -41,6 +63,20 @@ export function UploadCard({ onSubmit, isLoading }: UploadCardProps) {
   const handleDragLeave = useCallback(() => {
     setIsDragOver(false);
   }, []);
+
+  const progressPercent =
+    progress && progress.total > 0
+      ? Math.round((progress.current / progress.total) * 100)
+      : 0;
+
+  const stageLabel =
+    progress?.stage === "solving"
+      ? "Solving optimal route..."
+      : progress?.stage === "routing"
+        ? "Computing road distances..."
+        : progress
+          ? `Geocoding ${progress.current} of ${progress.total}...`
+          : "";
 
   return (
     <Card className="w-full max-w-md">
@@ -109,11 +145,101 @@ export function UploadCard({ onSubmit, isLoading }: UploadCardProps) {
           />
         </div>
 
+        {/* Journey mode */}
+        <div className="space-y-2">
+          <label className="text-sm font-medium">Daily journey mode</label>
+          <Select
+            value={journeyMode}
+            onValueChange={(v) => setJourneyMode(v as JourneyMode)}
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select journey mode" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="continue">
+                Continue from where you left off
+              </SelectItem>
+              <SelectItem value="same_start">
+                Start from base each day
+              </SelectItem>
+              <SelectItem value="round_trip">
+                Start &amp; return to base each day
+              </SelectItem>
+            </SelectContent>
+          </Select>
+          <p className="text-xs text-muted-foreground min-h-[2rem]">
+            {journeyMode === "continue" &&
+              "Each day begins where the previous day ended."}
+            {journeyMode === "same_start" &&
+              "Each day you travel from your base to the first store, then continue until done."}
+            {journeyMode === "round_trip" &&
+              "Each day you leave your base, visit stores, and return to base."}
+          </p>
+        </div>
+
+        {/* Start address (always rendered, disabled for "continue" mode) */}
+        <div className={`space-y-2 transition-opacity ${journeyMode === "continue" ? "opacity-40 pointer-events-none" : "opacity-100"}`}>
+          <label className="text-sm font-medium flex items-center gap-1.5">
+            <Home className="size-3.5" />
+            Base location address
+          </label>
+          <Select
+            value={startAddress === PRESET_ADDRESS ? "preset" : "custom"}
+            onValueChange={(v) => {
+              if (v === "preset") {
+                setStartAddress(PRESET_ADDRESS);
+              } else {
+                setStartAddress("");
+              }
+            }}
+            disabled={journeyMode === "continue"}
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="preset">{PRESET_ADDRESS}</SelectItem>
+              <SelectItem value="custom">Custom address...</SelectItem>
+            </SelectContent>
+          </Select>
+          {startAddress !== PRESET_ADDRESS && journeyMode !== "continue" && (
+            <Input
+              id="start-address"
+              placeholder="e.g. Nørrebrogade 1, 2200 København"
+              value={startAddress}
+              onChange={(e) => setStartAddress(e.target.value)}
+              autoFocus
+            />
+          )}
+          <p className="text-xs text-muted-foreground">
+            The address you start (and optionally return to) each day
+          </p>
+        </div>
+
+        {/* Revenue prioritization toggle */}
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <label htmlFor="prioritize-revenue" className="text-sm font-medium cursor-pointer">
+              Prioritize high-revenue stores
+            </label>
+            <p className="text-xs text-muted-foreground">
+              Visit stores with higher GMV earlier in the route
+            </p>
+          </div>
+          <Switch
+            id="prioritize-revenue"
+            checked={prioritizeRevenue}
+            onCheckedChange={setPrioritizeRevenue}
+          />
+        </div>
+
         {/* Submit */}
         <Button
           className="w-full"
-          disabled={!file || isLoading}
-          onClick={() => file && onSubmit(file, storesPerDay)}
+          disabled={!file || isLoading || (journeyMode !== "continue" && !startAddress.trim())}
+          onClick={() =>
+            file && onSubmit(file, storesPerDay, prioritizeRevenue, journeyMode, startAddress)
+          }
         >
           {isLoading ? (
             <>
@@ -125,10 +251,24 @@ export function UploadCard({ onSubmit, isLoading }: UploadCardProps) {
           )}
         </Button>
 
+        {/* Progress bar */}
         {isLoading && (
-          <p className="text-xs text-center text-muted-foreground">
-            Geocoding addresses... This may take a few minutes on first run.
-          </p>
+          <div className="space-y-2">
+            <Progress value={progressPercent} className="h-2" />
+            <div className="flex items-center justify-between">
+              <p className="text-xs text-muted-foreground">
+                {stageLabel}
+              </p>
+              <p className="text-xs font-medium text-muted-foreground">
+                {progressPercent}%
+              </p>
+            </div>
+            {progress?.stage === "geocoding" && progress.address && (
+              <p className="text-xs text-muted-foreground truncate">
+                {progress.address}
+              </p>
+            )}
+          </div>
         )}
       </CardContent>
     </Card>

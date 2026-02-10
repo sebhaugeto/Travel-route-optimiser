@@ -5,3 +5,4 @@ geopy
 numpy
 pandas
 python-multipart
+requests

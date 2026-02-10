@@ -8,6 +8,15 @@ export interface Store {
   lat: number;
   lng: number;
   leg_distance_m: number;
+  url: string | null;
+  revenue: number | null;
+}
+
+export type JourneyMode = "continue" | "same_start" | "round_trip";
+
+export interface BaseCommute {
+  commute_to_first_m: number;
+  commute_from_last_m?: number;
 }
 
 export interface RouteSummary {
@@ -18,6 +27,11 @@ export interface RouteSummary {
   num_days: number;
   total_stores: number;
   failed_geocoding: string[];
+  journey_mode?: JourneyMode;
+  base_commute?: BaseCommute;
+  start_address?: string;
+  start_lat?: number;
+  start_lng?: number;
 }
 
 export interface OptimizeResponse {
@@ -26,16 +40,38 @@ export interface OptimizeResponse {
   csv_download: string;
 }
 
+export interface ProgressEvent {
+  current: number;
+  total: number;
+  address: string;
+  stage: "geocoding" | "routing" | "solving";
+}
+
 export async function optimizeRoute(
   file: File,
   storesPerDay: number,
-  addressColumn?: string
+  onProgress?: (progress: ProgressEvent) => void,
+  options?: {
+    addressColumn?: string;
+    prioritizeRevenue?: boolean;
+    journeyMode?: JourneyMode;
+    startAddress?: string;
+  },
 ): Promise<OptimizeResponse> {
   const formData = new FormData();
   formData.append("file", file);
   formData.append("stores_per_day", storesPerDay.toString());
-  if (addressColumn) {
-    formData.append("address_column", addressColumn);
+  if (options?.addressColumn) {
+    formData.append("address_column", options.addressColumn);
+  }
+  if (options?.prioritizeRevenue) {
+    formData.append("prioritize_revenue", "true");
+  }
+  if (options?.journeyMode) {
+    formData.append("journey_mode", options.journeyMode);
+  }
+  if (options?.startAddress) {
+    formData.append("start_address", options.startAddress);
   }
 
   const res = await fetch(`${API_BASE}/optimize`, {
@@ -48,5 +84,68 @@ export async function optimizeRoute(
     throw new Error(error.detail || `Server error: ${res.status}`);
   }
 
-  return res.json();
+  // Read NDJSON stream line by line
+  const reader = res.body?.getReader();
+  if (!reader) {
+    throw new Error("Streaming not supported by browser");
+  }
+
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let result: OptimizeResponse | null = null;
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split("\n");
+    // Keep the last (potentially incomplete) line in the buffer
+    buffer = lines.pop() || "";
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed) continue;
+
+      try {
+        const event = JSON.parse(trimmed);
+
+        if (event.type === "progress" && onProgress) {
+          onProgress({
+            current: event.current,
+            total: event.total,
+            address: event.address,
+            stage: event.stage,
+          });
+        } else if (event.type === "result") {
+          result = event.data as OptimizeResponse;
+        } else if (event.type === "error") {
+          throw new Error(event.detail);
+        }
+      } catch (e) {
+        if (e instanceof SyntaxError) continue; // skip malformed lines
+        throw e;
+      }
+    }
+  }
+
+  // Process any remaining data in buffer
+  if (buffer.trim()) {
+    try {
+      const event = JSON.parse(buffer.trim());
+      if (event.type === "result") {
+        result = event.data as OptimizeResponse;
+      } else if (event.type === "error") {
+        throw new Error(event.detail);
+      }
+    } catch {
+      // ignore
+    }
+  }
+
+  if (!result) {
+    throw new Error("No result received from server");
+  }
+
+  return result;
 }
