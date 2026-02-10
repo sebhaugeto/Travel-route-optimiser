@@ -110,6 +110,15 @@ function StorePopupContent({
       <br />
       {store.address}
       <br />
+      <a
+        href={`https://www.google.com/maps/search/?api=1&query=${store.lat},${store.lng}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: "#2563eb", textDecoration: "underline" }}
+      >
+        Open in Google Maps
+      </a>
+      <br />
       Day {store.day}
       {store.leg_distance_m > 0 && (
         <>
