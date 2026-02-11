@@ -1,0 +1,20 @@
+name: Keep Render warm
+
+on:
+  schedule:
+    # Every 14 minutes from 04:00–19:59 UTC (06:00–21:59 CEST)
+    - cron: "*/14 4-19 * * *"
+    # At minutes 0 and 14 in hour 20 UTC (22:00 & 22:14 CEST — covers tail end)
+    - cron: "0,14 20 * * *"
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping backend health endpoint
+        run: |
+          echo "Pinging backend to keep Render warm..."
+          curl -sf --max-time 60 "${{ secrets.BACKEND_URL }}/health" || echo "Backend not reachable (may be sleeping)"
+        env:
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}

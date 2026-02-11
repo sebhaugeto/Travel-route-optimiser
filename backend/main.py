@@ -18,6 +18,13 @@ from solver import solve_tsp
 
 app = FastAPI(title="Travel Route Optimizer")
 
+
+@app.get("/health")
+async def health():
+    """Lightweight health check for warm-up pings and monitoring."""
+    return {"status": "ok"}
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

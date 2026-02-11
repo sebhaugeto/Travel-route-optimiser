@@ -1,5 +1,29 @@
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
+/**
+ * Ping the backend health endpoint.
+ * Resolves when the server is ready, retries on failure.
+ */
+export async function waitForBackend(
+  onAttempt?: (attempt: number) => void,
+  maxAttempts = 20,
+  intervalMs = 3000,
+): Promise<void> {
+  for (let i = 1; i <= maxAttempts; i++) {
+    onAttempt?.(i);
+    try {
+      const res = await fetch(`${API_BASE}/health`, { signal: AbortSignal.timeout(5000) });
+      if (res.ok) return;
+    } catch {
+      // server not ready yet
+    }
+    if (i < maxAttempts) {
+      await new Promise((r) => setTimeout(r, intervalMs));
+    }
+  }
+  // Give up after max attempts — let the user proceed anyway
+}
+
 export interface Store {
   visit_order: number;
   day: number;
