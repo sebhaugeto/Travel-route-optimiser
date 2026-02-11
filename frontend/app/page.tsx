@@ -199,7 +199,7 @@ export default function Home() {
               </div>
 
               {/* Map */}
-              <div className="p-4 h-[50vh] shrink-0">
+              <div className="p-4 h-[100vh] shrink-0">
                 <RouteMap
                   stores={activeStores}
                   summary={result.summary}
