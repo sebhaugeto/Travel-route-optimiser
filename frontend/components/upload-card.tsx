@@ -79,7 +79,7 @@ export function UploadCard({ onSubmit, isLoading, progress }: UploadCardProps) {
           : "";
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full max-w-md min-w-[28rem]">
       <CardHeader className="text-center">
         <CardTitle className="text-xl">Upload Store List</CardTitle>
         <p className="text-sm text-muted-foreground">
@@ -152,7 +152,7 @@ export function UploadCard({ onSubmit, isLoading, progress }: UploadCardProps) {
             value={journeyMode}
             onValueChange={(v) => setJourneyMode(v as JourneyMode)}
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full [&>span]:truncate">
               <SelectValue placeholder="Select journey mode" />
             </SelectTrigger>
             <SelectContent>
@@ -167,7 +167,7 @@ export function UploadCard({ onSubmit, isLoading, progress }: UploadCardProps) {
               </SelectItem>
             </SelectContent>
           </Select>
-          <p className="text-xs text-muted-foreground min-h-[2rem]">
+          <p className="text-xs text-muted-foreground h-[2.5rem]">
             {journeyMode === "continue" &&
               "Each day begins where the previous day ended."}
             {journeyMode === "same_start" &&

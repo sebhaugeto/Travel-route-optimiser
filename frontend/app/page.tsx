@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { MapPin, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { UploadCard } from "@/components/upload-card";
-import { RouteSummaryPanel } from "@/components/route-summary";
+import { RouteSummaryCard, StoreOrderCard } from "@/components/route-summary";
 import { DownloadButton } from "@/components/download-button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { optimizeRoute, type OptimizeResponse, type ProgressEvent, type JourneyMode, type Store } from "@/lib/api";
@@ -86,13 +86,13 @@ export default function Home() {
   return (
     <div className="flex flex-col h-screen">
       {/* Header */}
-      <header className="flex items-center justify-between border-b px-6 py-3 shrink-0">
+      <header className="flex items-center justify-between border-b px-4 sm:px-6 py-3 shrink-0 gap-2">
         <button
           onClick={handleReset}
-          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          className="flex items-center gap-2 hover:opacity-80 transition-opacity min-w-0"
         >
-          <MapPin className="size-5 text-primary" />
-          <h1 className="text-lg font-semibold">Travel Route Optimizer</h1>
+          <MapPin className="size-5 text-primary shrink-0" />
+          <h1 className="text-lg font-semibold truncate">Travel Route Optimizer</h1>
         </button>
         <div className="flex items-center gap-2">
           {result && (
@@ -123,27 +123,58 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          /* Results state: map + sidebar */
-          <div className="flex h-full">
-            {/* Map */}
-            <div className="flex-1 p-4 pr-0">
-              <RouteMap
-                stores={activeStores}
-                summary={result.summary}
-                onDeleteStore={handleDeleteStore}
-              />
+          /* Results state: responsive layout */
+          <>
+            {/* ---- Mobile layout (vertical scroll) ---- */}
+            <div className="lg:hidden flex flex-col h-full overflow-y-auto">
+              {/* Route Summary */}
+              <div className="p-4 pb-0">
+                <RouteSummaryCard
+                  summary={result.summary}
+                  stores={activeStores}
+                  deletedStores={deletedStores}
+                  onRestoreStore={handleRestoreStore}
+                />
+              </div>
+
+              {/* Map */}
+              <div className="p-4 h-[50vh] shrink-0">
+                <RouteMap
+                  stores={activeStores}
+                  summary={result.summary}
+                  onDeleteStore={handleDeleteStore}
+                />
+              </div>
+
+              {/* Store Order */}
+              <div className="p-4 pt-0">
+                <StoreOrderCard stores={activeStores} className="max-h-[60vh]" />
+              </div>
             </div>
 
-            {/* Sidebar */}
-            <div className="w-[360px] shrink-0 p-4 h-full overflow-hidden">
-              <RouteSummaryPanel
-                summary={result.summary}
-                stores={activeStores}
-                deletedStores={deletedStores}
-                onRestoreStore={handleRestoreStore}
-              />
+            {/* ---- Desktop layout (side-by-side) ---- */}
+            <div className="hidden lg:flex h-full">
+              {/* Map */}
+              <div className="flex-1 p-4 pr-0">
+                <RouteMap
+                  stores={activeStores}
+                  summary={result.summary}
+                  onDeleteStore={handleDeleteStore}
+                />
+              </div>
+
+              {/* Sidebar */}
+              <div className="w-[360px] shrink-0 p-4 h-full overflow-hidden flex flex-col gap-4">
+                <RouteSummaryCard
+                  summary={result.summary}
+                  stores={activeStores}
+                  deletedStores={deletedStores}
+                  onRestoreStore={handleRestoreStore}
+                />
+                <StoreOrderCard stores={activeStores} />
+              </div>
             </div>
-          </div>
+          </>
         )}
       </main>
     </div>
