@@ -61,10 +61,10 @@ _FREDERIKSBERG_POSTCODES = {"2000", "2720", "1800", "1850", "1900", "1950"}
 
 # Known addresses with hardcoded coordinates (fallback when Nominatim fails)
 _KNOWN_ADDRESSES: dict[str, tuple[float, float]] = {
-    "applebys pl. 7, 1411 københavn": (55.6713, 12.5714),
-    "applebys plads 7, 1411 københavn": (55.6713, 12.5714),
-    "applebys pl. 7, 1411 copenhagen": (55.6713, 12.5714),
-    "applebys plads 7, 1411 copenhagen": (55.6713, 12.5714),
+    "applebys pl. 7, 1411 københavn": (55.67111, 12.585438),
+    "applebys plads 7, 1411 københavn": (55.67111, 12.585438),
+    "applebys pl. 7, 1411 copenhagen": (55.67111, 12.585438),
+    "applebys plads 7, 1411 copenhagen": (55.67111, 12.585438),
 }
 
 
