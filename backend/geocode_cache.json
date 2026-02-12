@@ -1,0 +1,514 @@
+{
+  "Amagertorv 10, 1160 København, Denmark": {
+    "lat": 55.678898,
+    "lng": 12.578613
+  },
+  "Østergade 47, 1100 København K, Denmark": {
+    "lat": 55.679194,
+    "lng": 12.581339
+  },
+  "Frederiksborggade 1, 1360 København K, Denmark": {
+    "lat": 55.682779,
+    "lng": 12.573382
+  },
+  "Frederiksberggade 11B, 1459 København, Denmark": {
+    "lat": 55.677352,
+    "lng": 12.571501
+  },
+  "Dybbølsbro 4, 1577 København V, Denmark": {
+    "lat": 55.664038,
+    "lng": 12.561455
+  },
+  "Østergade 61, 1100 København, Denmark": {
+    "lat": 55.678962,
+    "lng": 12.580124
+  },
+  "Valby Torvegade 3, 2500 København, Denmark": {
+    "lat": 55.664628,
+    "lng": 12.51241
+  },
+  "Amagertorv 24, 1160 København, Denmark": {
+    "lat": 55.678713,
+    "lng": 12.576245
+  },
+  "Frederikssundsvej 5, 2400 København NV, Denmark": {
+    "lat": 55.700888,
+    "lng": 12.536898
+  },
+  "Slagterboderne 15, 1716 København, Denmark": {
+    "lat": 55.668873,
+    "lng": 12.55902
+  },
+  "Østergade 52, 1100 København": {
+    "lat": 55.679268,
+    "lng": 12.58069
+  },
+  "Vermlandsgade 51, 2300 København S, Denmark": {
+    "lat": 55.668281,
+    "lng": 12.606889
+  },
+  "Fælledvej 4, 2200 København, Denmark": {
+    "lat": 55.688451,
+    "lng": 12.559909
+  },
+  "Østerfælled Torv 25, 2100 København, Denmark": {
+    "lat": 55.705717,
+    "lng": 12.575838
+  },
+  "Ny Østergade 32, 1101 København, Denmark": {
+    "lat": 55.682078,
+    "lng": 12.581396
+  },
+  "Vesterbrogade 25B, Copenhagen, Denmark": {
+    "lat": 55.67289,
+    "lng": 12.559115
+  },
+  "Købmagergade 36, 1150 København": {
+    "lat": 55.680562,
+    "lng": 12.578391
+  },
+  "Jernbane Allé 39, 2720 Frederiksberg, Denmark": {
+    "lat": 55.6829627,
+    "lng": 12.4946393
+  },
+  "Gladsaxevej 311, 2860 Søborg, Denmark": {
+    "lat": 55.734608,
+    "lng": 12.486747
+  },
+  "Strandlodsvej 44, 2300 København S, Denmark": {
+    "lat": 55.664237,
+    "lng": 12.622294
+  },
+  "Gl. Kongevej 29A, 1610 Vesterbro, Denmark": {
+    "lat": 55.6738299,
+    "lng": 12.5558003
+  },
+  "Nikolaj Plads 9, 1067 Indre By, Denmark": {
+    "lat": 55.678778,
+    "lng": 12.58232
+  },
+  "Kalvebod Brygge 59, 1561 København V, Denmark": {
+    "lat": 55.662732,
+    "lng": 12.561475
+  },
+  "Refshalevej 171B, 1432 København, Denmark": {
+    "lat": 55.692617,
+    "lng": 12.612439
+  },
+  "Fabriksområdet 56, 1440 København, Denmark": {
+    "lat": 55.672847,
+    "lng": 12.600981
+  },
+  "Kalvebod Brygge 59, 1560 København, Denmark": {
+    "lat": 55.662732,
+    "lng": 12.561475
+  },
+  "Fredericiagade 57, 1310 København, Denmark": {
+    "lat": 55.686945,
+    "lng": 12.585826
+  },
+  "Vognmagergade 9, 1120 København, Denmark": {
+    "lat": 55.682476,
+    "lng": 12.578146
+  },
+  "Strandlodsvej 20, 2300 København, Denmark": {
+    "lat": 55.666331,
+    "lng": 12.620658
+  },
+  "Arne Jacobsens Allé 12, 2300 København, Denmark": {
+    "lat": 55.630999,
+    "lng": 12.575893
+  },
+  "Kuglegårdsvej 1, 1434 København, Denmark": {
+    "lat": 55.677831,
+    "lng": 12.600444
+  },
+  "Christian IX's Gade 7, 1111 Indre By, Denmark": {
+    "lat": 55.682284,
+    "lng": 12.580682
+  },
+  "Havneholmen 5, 1560 København, Denmark": {
+    "lat": 55.661324,
+    "lng": 12.561875
+  },
+  "Torvegade 55-57, 1400 København, Denmark": {
+    "lat": 55.672616,
+    "lng": 12.5910113
+  },
+  "Tømmergravsgade 4b, 2450 København, Denmark": {
+    "lat": 55.6590429,
+    "lng": 12.5581782
+  },
+  "Frederiksborggade 22, 1360 København, Denmark": {
+    "lat": 55.684039,
+    "lng": 12.571085
+  },
+  "Vesterbrogade 67, 1620 København, Denmark": {
+    "lat": 55.672539,
+    "lng": 12.551637
+  },
+  "Vesterbrogade 99, 1620 København, Denmark": {
+    "lat": 55.671617,
+    "lng": 12.546278
+  },
+  "Gammel Mønt 11, 1117 København, Denmark": {
+    "lat": 55.681146,
+    "lng": 12.581241
+  },
+  "Amager Centret 124, Copenhagen, Denmark": {
+    "lat": 55.6630714,
+    "lng": 12.6049652
+  },
+  "Istedgade 80, 1650 København, Denmark": {
+    "lat": 55.669487,
+    "lng": 12.55378
+  },
+  "Øresundsvej 26-28, Copenhagen, Denmark": {
+    "lat": 55.6608939,
+    "lng": 12.6262265
+  },
+  "Borups Allé 144, 2000 Frederiksberg, Denmark": {
+    "lat": 55.694656,
+    "lng": 12.53002
+  },
+  "Valkendorfsgade 4, 1151 København, Denmark": {
+    "lat": 55.679967,
+    "lng": 12.577533
+  },
+  "Bredgade 3, 1260 København K, Denmark": {
+    "lat": 55.681313,
+    "lng": 12.587586
+  },
+  "Bredgade 24, 1260 København K, Denmark": {
+    "lat": 55.682061,
+    "lng": 12.588593
+  },
+  "Falkoner Alle 47, 2000 Frederiksberg, Denmark": {
+    "lat": 55.684371,
+    "lng": 12.537302
+  },
+  "Amager 6, 2300 København, Denmark": {
+    "lat": 55.666626,
+    "lng": 12.630101
+  },
+  "Gl. Kongevej 88, 1850 Frederiksberg, Denmark": {
+    "lat": 55.675002,
+    "lng": 12.548253
+  },
+  "Nørrebrogade 228, 2200 København, Denmark": {
+    "lat": 55.700403,
+    "lng": 12.539769
+  },
+  "Bredgade 21-23, 1260 København, Denmark": {
+    "lat": 55.6826286,
+    "lng": 12.588849
+  },
+  "Esplanaden 1, 1263 København K, Denmark": {
+    "lat": 55.687434,
+    "lng": 12.590434
+  },
+  "Nørrebrogade 78, 2200 København N, Denmark": {
+    "lat": 55.691737,
+    "lng": 12.553042
+  },
+  "Gothersgade 160, 1123 København K, Denmark": {
+    "lat": 55.686586,
+    "lng": 12.566343
+  },
+  "Finsensvej 9, 2000 Frederiksberg, Denmark": {
+    "lat": 55.680927,
+    "lng": 12.520011
+  },
+  "Bredgade 19, 1260 København K, Denmark": {
+    "lat": 55.681742,
+    "lng": 12.587923
+  },
+  "Istedgade 56, 1650 København, Denmark": {
+    "lat": 55.66998,
+    "lng": 12.55562
+  },
+  "Frederiksholms Kanal 4, Copenhagen, Denmark": {
+    "lat": 55.675897,
+    "lng": 12.574947
+  },
+  "Ved Glyptoteket 6, 1575 København, Denmark": {
+    "lat": 55.671606,
+    "lng": 12.571334
+  },
+  "Istedgade 84, 1650 København, Denmark": {
+    "lat": 55.669379,
+    "lng": 12.553538
+  },
+  "Amagerbrogade 186, 2300 København, Denmark": {
+    "lat": 55.651346,
+    "lng": 12.611815
+  },
+  "Ny Østergade 34, 1101 København, Denmark": {
+    "lat": 55.68212,
+    "lng": 12.581263
+  },
+  "Store Kongensgade 77, 1264 København, Denmark": {
+    "lat": 55.685326,
+    "lng": 12.588373
+  },
+  "Amager Landevej 233, 2770 København, Denmark": {
+    "lat": 55.6393904,
+    "lng": 12.617722
+  },
+  "Løvstræde 1, 1152 København, Denmark": {
+    "lat": 55.680563,
+    "lng": 12.577451
+  },
+  "Ny Østergade 11, 1101 Indre By, Denmark": {
+    "lat": 55.680996,
+    "lng": 12.58281
+  },
+  "Sølvgade 85B, 1307 København, Denmark": {
+    "lat": 55.689473,
+    "lng": 12.573812
+  },
+  "Gl. Kongevej 76, Copenhagen, Denmark": {
+    "lat": 55.6737372,
+    "lng": 12.5558077
+  },
+  "Kuglegårdsvej 12, 1434 København K, Denmark": {
+    "lat": 55.678318,
+    "lng": 12.60107
+  },
+  "Vimmelskaftet 43, 1161 København K, Denmark": {
+    "lat": 55.678569,
+    "lng": 12.57518
+  },
+  "Korsdalsvej 129, 2610 Rødovre, Denmark": {
+    "lat": 55.671629,
+    "lng": 12.435321
+  },
+  "Trommesalen 2, 1614 København, Denmark": {
+    "lat": 55.674121,
+    "lng": 12.56097
+  },
+  "H. C. Andersens Boulevard 33, 1553 København, Denmark": {
+    "lat": 55.673701,
+    "lng": 12.572678
+  },
+  "Gl. Kongevej 90, 1850 Frederiksberg, Denmark": {
+    "lat": 55.675166,
+    "lng": 12.547682
+  },
+  "Overgaden Neden Vandet 33, 1414 København, Denmark": {
+    "lat": 55.67319,
+    "lng": 12.591364
+  },
+  "Bredgade 32, 1260 København, Denmark": {
+    "lat": 55.683494,
+    "lng": 12.589776
+  },
+  "Vesterbrogade 196, 1800 Frederiksberg, Denmark": {
+    "lat": 55.670775,
+    "lng": 12.533497
+  },
+  "Øster Farimagsgade 30, 2100 København, Denmark": {
+    "lat": 55.691493,
+    "lng": 12.576457
+  },
+  "Antonigade 4, 1106 København K, Denmark": {
+    "lat": 55.680325,
+    "lng": 12.581402
+  },
+  "Store Strandstræde 20, st, 1255 København, Denmark": {
+    "lat": 55.68124,
+    "lng": 12.58964
+  },
+  "Bredgade 42, 1260 København, Denmark": {
+    "lat": 55.684155,
+    "lng": 12.59031
+  },
+  "Frederiksgade 1, 1265 København": {
+    "lat": 55.685312,
+    "lng": 12.588881
+  },
+  "Skindergade 34, 1159 København, Denmark": {
+    "lat": 55.679025,
+    "lng": 12.573564
+  },
+  "Bryggernes Plads 22, 1799 København, Denmark": {
+    "lat": 55.6663,
+    "lng": 12.531813
+  },
+  "Strandlodsvej 8, 2300 København S, Denmark": {
+    "lat": 55.667322,
+    "lng": 12.619342
+  },
+  "Nelson Mandelas Allé 16, 2450 København SV, Denmark": {
+    "lat": 55.65397,
+    "lng": 12.557394
+  },
+  "Pilestræde 47, 1112 København, Denmark": {
+    "lat": 55.68123,
+    "lng": 12.578965
+  },
+  "Masnedøgade 22, 2100 København, Denmark": {
+    "lat": 55.710986,
+    "lng": 12.57337
+  },
+  "Finsensvej 52, 2000 Frederiksberg, Denmark": {
+    "lat": 55.681831,
+    "lng": 12.512751
+  },
+  "Gothersgade 91, 1123 København, Denmark": {
+    "lat": 55.68339,
+    "lng": 12.577626
+  },
+  "Esplanaden 2, 1263 København, Denmark": {
+    "lat": 55.687225,
+    "lng": 12.590465
+  },
+  "Bredgade 28B, 1260 København, Denmark": {
+    "lat": 55.683218,
+    "lng": 12.589527
+  },
+  "Godthåbsvej 11, 2000 Frederiksberg, Denmark": {
+    "lat": 55.685508,
+    "lng": 12.537295
+  },
+  "Rådhusstræde 15, 1466 København K, Denmark": {
+    "lat": 55.676327,
+    "lng": 12.574798
+  },
+  "Frederikssundsvej 204, 2700 København, Denmark": {
+    "lat": 55.706214,
+    "lng": 12.489713
+  },
+  "Østerbrogade 78, 2100 København Ø, Denmark": {
+    "lat": 55.699954,
+    "lng": 12.577713
+  },
+  "Antonigade 4, 1106 København, Denmark": {
+    "lat": 55.680325,
+    "lng": 12.581402
+  },
+  "Borgergade 27, 1300 København K, Denmark": {
+    "lat": 55.685719,
+    "lng": 12.58651
+  },
+  "Niels Hemmingsens Gade 28, 1153 København, Denmark": {
+    "lat": 55.67998,
+    "lng": 12.576641
+  },
+  "Lemberggade 15, 2300 København, Denmark": {
+    "lat": 55.664141,
+    "lng": 12.620242
+  },
+  "Gl. Kongevej 105, 1850 Frederiksberg, Denmark": {
+    "lat": 55.675214,
+    "lng": 12.546309
+  },
+  "Bredgade 6, 1260 København, Denmark": {
+    "lat": 55.681335,
+    "lng": 12.587977
+  },
+  "Bredgade 28, 1260 København, Denmark": {
+    "lat": 55.68288,
+    "lng": 12.589865
+  },
+  "Bredgade 33, 1260 København, Denmark": {
+    "lat": 55.682551,
+    "lng": 12.588601
+  },
+  "Amager Strandvej 124, 2300 København s, Denmark": {
+    "lat": 55.659397,
+    "lng": 12.633767
+  },
+  "Store Kongensgade 20, 1264 København": {
+    "lat": 55.682002,
+    "lng": 12.58596
+  },
+  "Vesterbrogade 145, 1620 København, Denmark": {
+    "lat": 55.670118,
+    "lng": 12.538909
+  },
+  "Otto Busses Vej 31, 2450 København, Denmark": {
+    "lat": 55.657073,
+    "lng": 12.543256
+  },
+  "Skindergade 38, 1159 København K, Denmark": {
+    "lat": 55.678779,
+    "lng": 12.572963
+  },
+  "Kronprinsessegade 6, 1360 København, Denmark": {
+    "lat": 55.683025,
+    "lng": 12.581214
+  },
+  "Ravnsborggade 21A, 2200 København, Denmark": {
+    "lat": 55.68954,
+    "lng": 12.56291
+  },
+  "Laplandsgade 6, 2300 København, Denmark": {
+    "lat": 55.668625,
+    "lng": 12.611154
+  },
+  "Fælledvej 18, Copenhagen, Denmark": {
+    "lat": 55.689789,
+    "lng": 12.560658
+  },
+  "Refshalevej 163, 1432 København, Denmark": {
+    "lat": 55.692724,
+    "lng": 12.611513
+  },
+  "Frederiksgade 1, 1265 København, Denmark": {
+    "lat": 55.685312,
+    "lng": 12.588881
+  },
+  "Nørregade 6, 1165 København": {
+    "lat": 55.678864,
+    "lng": 12.572243
+  },
+  "Bredgade 22, 1260 København, Denmark": {
+    "lat": 55.681953,
+    "lng": 12.588488
+  },
+  "Løvstræde 1, 1152 Indre By, Denmark": {
+    "lat": 55.680563,
+    "lng": 12.577451
+  },
+  "Købmagergade 50C, Copenhagen, Denmark": {
+    "lat": 55.681121,
+    "lng": 12.576494
+  },
+  "Ryesgade 116A, 2100 København, Denmark": {
+    "lat": 55.697523,
+    "lng": 12.57687
+  },
+  "Flaskehalsen 2, 1799 København, Denmark": {
+    "lat": 55.665608,
+    "lng": 12.535744
+  },
+  "Bredgade 65, 1260 København K, Denmark": {
+    "lat": 55.686454,
+    "lng": 12.59184
+  },
+  "Applebys Plads 7, 1411 København": {
+    "lat": 55.67111,
+    "lng": 12.585438
+  },
+  "Gammel Kongevej 76, Copenhagen, Denmark": {
+    "lat": 55.6738299,
+    "lng": 12.5558003
+  },
+  "Gammel Kongevej 90, 1850 Frederiksberg, Denmark": {
+    "lat": 55.675166,
+    "lng": 12.547682
+  },
+  "Gammel Kongevej 105, 1850 Frederiksberg, Denmark": {
+    "lat": 55.675214,
+    "lng": 12.546309
+  },
+  "Gammel Kongevej 29A, 1610 Vesterbro, Denmark": {
+    "lat": 55.6738299,
+    "lng": 12.5558003
+  },
+  "Gammel Kongevej 88, 1850 Frederiksberg, Denmark": {
+    "lat": 55.675002,
+    "lng": 12.548253
+  }
+}
